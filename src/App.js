@@ -1,28 +1,63 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from "react-router-dom";
+import styled from 'styled-components'
+
 import './App.css';
+import { logout, hasAuthentication } from './auth';
+import Login from './user/Login';
+import Home from './home/Home';
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+
+  return (
+    <Route
+      {...rest}
+      render={props =>
+	hasAuthentication() ? (
+          <Home {...props} />
+        ) : (        
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+  }
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+	<Router>
+          <Main>	
+	    <Route
+	        path="/login"
+		component={Login}
+	    />
+	    <PrivateRoute
+		exact
+		path="/"
+		componet={Home}
+	    />
+	</Main>
+    </Router>
     );
   }
 }
 
 export default App;
+
