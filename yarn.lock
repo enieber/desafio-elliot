@@ -5454,7 +5454,7 @@ jest-worker@^23.2.0:
   dependencies:
     merge-stream "^1.0.1"
 
-jest@23.6.0:
+jest@23.6.0, jest@^23.6.0:
   version "23.6.0"
   resolved "https://registry.yarnpkg.com/jest/-/jest-23.6.0.tgz#ad5835e923ebf6e19e7a1d7529a432edfee7813d"
   integrity sha512-lWzcd+HSiqeuxyhG+EnZds6iO3Y3ZEnMrfZq/OTGvF/C+Z4fPMCdhWTGSAiO2Oym9rbEXfwddHhh6jqrTF3+Lw==
@@ -9007,6 +9007,11 @@ styled-components@^4.1.2:
     stylis "^3.5.0"
     stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
+
+styled-media-query@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/styled-media-query/-/styled-media-query-2.0.2.tgz#65347d5367f69458f86dc7dd723f42faae304ad1"
+  integrity sha512-fRLVVa9cXvNiDYw/EqhIR7keXOQSdnUVGnWBd5xnvFUKwCAVOLTqjQBblZnE/HverH+hNeNQY2APf96mrjYqGA==
 
 stylehacks@^4.0.0:
   version "4.0.1"

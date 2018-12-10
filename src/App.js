@@ -6,7 +6,6 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
-import styled from 'styled-components'
 
 import './App.css';
 import { logout, hasAuthentication } from './auth';
@@ -34,16 +33,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
   }
 
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-`;
 
 class App extends Component {
   render() {
     return (
 	<Router>
-          <Main>	
+          <React.Fragment>	
 	    <Route
 	        path="/login"
 		component={Login}
@@ -53,7 +48,7 @@ class App extends Component {
 		path="/"
 		componet={Home}
 	    />
-	</Main>
+	</React.Fragment>
     </Router>
     );
   }

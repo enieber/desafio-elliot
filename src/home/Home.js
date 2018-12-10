@@ -5,6 +5,10 @@ import {
 
 import { logout, hasAuthentication as hasToken  } from '../auth';
 
+import Graph from '../Graph';  
+import Clients from '../Clients';
+import Header from './Header';
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -22,17 +26,23 @@ export default class Home extends React.Component {
     const { hasToken } = this.state;
 
     return (
-	<div>
-	    Home page
-	    <button
-		onClick={() => {
-		  logout();
-		  this.setState({ hasToken: false });
+	<React.Fragment>
+	    <Header
+		logout={() => {
+		    logout();
+		    this.setState({ hasToken: false });
 		}}
-	    >
-		Sair</button>
-	    {hasToken ? (<div/>) : (<Redirect to={'/login'} />)}
-	</div>
+	    />
+	    <Graph/>
+	    <Clients/>
+	      <button
+		onClick={() => 
+		  alert('WIP - Em breve tera a parte de filtragem')
+		}
+	      >Filtro</button>
+
+	   {hasToken ? (<div/>) : (<Redirect to={'/login'} />)}
+	</React.Fragment>
     );
   }
 }
