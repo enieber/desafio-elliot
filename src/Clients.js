@@ -2,8 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-import { get as getRequest } from './request';
+import {
+    get as getRequest,
+    put as putRequest,
+} from './request';
 import Graph from './Graph';
+import {
+  Button,
+} from './components';
 
 const Container = styled.div`
   display: flex;
@@ -113,8 +119,7 @@ export default class Clients extends React.Component {
 	  <List>
 	  {this.state.listClients.map((item) => {
 	      return (
-		<ItemList
-		  onClick={() => {alert(item.id)}}>
+		<ItemList>
 		  <ClientData>
 		    <h3
 		      style={{
@@ -129,6 +134,23 @@ export default class Clients extends React.Component {
 		    }}
 		  >
 		      {item.has_admin ? 'Administrando' : 'Não administrado'}</p>
+		  {item.has_admin ? '' : (
+		      <Button
+			  onClick={() => {
+			      const newItem = {
+				  ...item,
+				  has_admin: true,
+			      };
+			      putRequest(`/clients/${item.id}`, newItem)
+				.then(res => {
+				  alert(`Agora você é administrador da conta do ${item.name}`);
+				  window.location.reload();
+				});
+
+			  }}
+			small
+			primary
+		      >Solicitar</Button>)}
 		  </ClientData>
 		  <Contacts>
 		 		    <p

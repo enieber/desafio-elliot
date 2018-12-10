@@ -18,8 +18,13 @@ export const Button = styled.button`
   padding: 0.5em;
   margin: 1em;
   border: none;
+  ${props => props.small ? `
+    height: 5vh;
+    width: 25vw;
+  ` : `
   height: 10vh;
   width: 40vw;
+  `}
   border-radius: 100px;
   ${props => props.success ? `
     background: #00b563;
