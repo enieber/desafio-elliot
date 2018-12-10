@@ -20,6 +20,15 @@ export const Button = styled.button`
   border: none;
   height: 10vh;
   width: 40vw;
+  border-radius: 100px;
+  ${props => props.success ? `
+    background: #00b563;
+    color: #fff;
+  ` : ``}
+  ${props => props.primary == true ? `
+     background: #ee2e5d;
+     color: #fff;
+  `:''}
 `;
 
 

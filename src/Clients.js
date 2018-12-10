@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import media from "styled-media-query";
+import media from 'styled-media-query';
 
 import { get as getRequest } from './request';
 import Graph from './Graph';
@@ -97,9 +97,15 @@ export default class Clients extends React.Component {
 	    }
 	];
 
-      console.log(data);
       return (
-        <Container>
+       <Container>
+
+	     <h2
+		 style={{
+		     textAlign: 'center',
+	        fontSize: '16px',
+	      }}
+	    >Clientes</h2>
 	  <Graph
 	    data={data}
 	  />

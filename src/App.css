@@ -1,7 +1,6 @@
 html, body {
   display: flex;  
   height: 100%;
-  width: 100%;
 }
 
 body, #root {
@@ -10,5 +9,6 @@ body, #root {
   align-items: stretch;
   display: flex;
   flex-direction: column;
-}
+  background:    #fbfe55;
+ }
 

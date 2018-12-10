@@ -20,6 +20,7 @@ export default class Header extends React.PureComponent {
 	    <HeaderContainer>
 		  <h1>Elliot</h1>
 		  <Button
+		      primary
 			  onClick={this.props.logout}
 		    >
 		    Sair

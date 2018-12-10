@@ -2,11 +2,22 @@ import React from 'react';
 import {
   Redirect,
 } from "react-router-dom";
+import styled from 'styled-components';
 
 import { logout, hasAuthentication as hasToken  } from '../auth';
 
 import Clients from '../Clients';
 import Header from './Header';
+
+const Container = styled.div`
+ background-image:
+    linear-gradient(
+      45deg, 
+      #f4c453,
+      #fbfe55
+    );
+
+`;
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -25,7 +36,7 @@ export default class Home extends React.Component {
     const { hasToken } = this.state;
   
     return (
-	<React.Fragment>
+	<Container>
 	    <Header
 		logout={() => {
 		    logout();
@@ -34,7 +45,7 @@ export default class Home extends React.Component {
 	    />
 	    <Clients/>
 	   {hasToken ? (<div/>) : (<Redirect to={'/login'} />)}
-	</React.Fragment>
+	</Container>
     );
   }
 }

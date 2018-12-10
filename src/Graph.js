@@ -6,6 +6,8 @@ const GraphContainer = styled.div`
   display: flex;
   justify-content: center;
   min-height: 50vh;
+  width: 450px;
+  align-items: center;
 `;
                    
 const renderActiveShape = (props) => {
@@ -57,7 +59,7 @@ const renderActiveShape = (props) => {
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none"/>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${value} clientes`}</text>
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#2e2d33">{`${value} clientes`}</text>
       <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
         {`(${(percent * 100).toFixed(2)}%)`}
       </text>
@@ -75,7 +77,7 @@ export default class Graph extends React.Component {
 
     render() {
       return (
-	<GraphContainer>
+	 <GraphContainer>
 	    <PieChart
 		width={400}
 		height={400}
@@ -88,7 +90,7 @@ export default class Graph extends React.Component {
 	        cy={200} 
 		innerRadius={60}
 	        outerRadius={80} 
-		fill="#8884d8"
+		fill="#ee2e5d"
 		onMouseEnter={(i, index) => {
 		  this.setState({
 		    activeIndex: index,

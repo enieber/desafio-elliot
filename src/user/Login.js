@@ -13,11 +13,13 @@ import {
 } from '../components';
 
 const ContainerLogin = styled.div`
+  color: #002140;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
+  background: linear-gradient(#f4c453,#fbfe55); 
 `;
 
 const FormStyled = styled.form`
@@ -48,7 +50,7 @@ export default class Login extends React.Component {
 
 	return (
 	  <ContainerLogin>
-	      <h1>Elliot</h1>
+	    <h1>Elliot</h1>
 	    <Formik
 	        initialValues={{
 		    email: '',
@@ -110,6 +112,7 @@ export default class Login extends React.Component {
 				{errors.password && touched.password && errors.password}
 			    </LabelStyled>
 			    <Button
+			      success
 				type="submit"
 				disabled={isSubmitting}
 			    >
