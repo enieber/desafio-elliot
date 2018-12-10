@@ -3,17 +3,23 @@ import styled from 'styled-components';
 import media from "styled-media-query";
 
 import { get as getRequest } from './request';
+import Graph from './Graph';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const ClientsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 50vh;
+  height: 140vh;
+  margin-top: 10em;
 `;
 
 const List = styled.ul`
   overflow: scroll;
   list-style: none;
-  margin: 0;
   padding: 1em;
 `;
 
@@ -79,8 +85,24 @@ export default class Clients extends React.Component {
       );
     }
 
-    return (
-	<ClientsContainer>
+    const data = [
+	    {
+		name: 'Autorizado',
+		value: this.state.listClients.filter(item => item.has_admin).length
+	    },
+	    {
+		name: 'Não autorizado',
+		value: this.state.listClients.filter(item => !item.has_admin).length
+	    }
+	];
+
+      console.log(data);
+      return (
+        <Container>
+	  <Graph
+	    data={data}
+	  />
+          <ClientsContainer>
 	  <List>
 	  {this.state.listClients.map((item) => {
 	      return (
@@ -121,6 +143,7 @@ export default class Clients extends React.Component {
 	  })}
         </List>
       </ClientsContainer>
+    </Container>
     );
   }
 }
