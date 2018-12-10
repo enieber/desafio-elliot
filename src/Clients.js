@@ -8,13 +8,14 @@ import Graph from './Graph';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 50vh;
 `;
 
 const ClientsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 140vh;
-  margin-top: 10em;
+  min-height: 140vh;
+  margin-top: 5em;
 `;
 
 const List = styled.ul`

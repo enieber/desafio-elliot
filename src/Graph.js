@@ -5,8 +5,7 @@ import { PieChart, Pie, Sector } from 'recharts';
 const GraphContainer = styled.div`
   display: flex;
   justify-content: center;
-  height: 150vh;
-  margin: 2em;
+  min-height: 50vh;
 `;
                    
 const renderActiveShape = (props) => {

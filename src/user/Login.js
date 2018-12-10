@@ -6,19 +6,25 @@ import {
 } from "react-router-dom";
 
 import { login, hasAuthentication } from '../auth';
+import {
+    Button,
+    InputStyled,
+    LabelStyled,
+} from '../components';
+
+const ContainerLogin = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
 
 const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-`;
-
-const LabelStyled = styled.label`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-  margin-bottom: 1em;
 `;
 
 export default class Login extends React.Component {
@@ -41,7 +47,8 @@ export default class Login extends React.Component {
       if (redirect) return <Redirect to={from} />;
 
 	return (
-	  <div>
+	  <ContainerLogin>
+	      <h1>Elliot</h1>
 	    <Formik
 	        initialValues={{
 		    email: '',
@@ -82,7 +89,7 @@ export default class Login extends React.Component {
 		        onSubmit={handleSubmit}>
 		        <LabelStyled>
 			    Email:
-			    <input
+			    <InputStyled
 				type="email"
 				name="email"
 				onChange={handleChange}
@@ -93,7 +100,7 @@ export default class Login extends React.Component {
 			</LabelStyled>
 			    <LabelStyled>
 				Senha:
-				<input
+				<InputStyled
 				    type="password"
 				    name="password"
 				    onChange={handleChange}
@@ -102,17 +109,16 @@ export default class Login extends React.Component {
 				/>
 				{errors.password && touched.password && errors.password}
 			    </LabelStyled>
-			    <button
+			    <Button
 				type="submit"
 				disabled={isSubmitting}
 			    >
 				Entrar
-			    </button>
+			    </Button>
 		    </FormStyled>
 		    )}
 		</Formik>
-		<button>Esqueci a Senha</button>
-	    </div>
+	    </ContainerLogin>
 	);
     }
 }
