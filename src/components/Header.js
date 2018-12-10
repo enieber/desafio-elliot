@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button } from '../components';
+import { Button } from './';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -11,8 +11,6 @@ const HeaderContainer = styled.header`
   align-items: center;
   min-height: 10vh;
 `;
-
-
 
 export default class Header extends React.PureComponent {
     render() {

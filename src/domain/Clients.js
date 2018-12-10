@@ -5,11 +5,11 @@ import media from 'styled-media-query';
 import {
     get as getRequest,
     put as putRequest,
-} from './request';
-import Graph from './Graph';
+} from '../request';
+import Graph from '../components/Graph';
 import {
   Button,
-} from './components';
+} from '../components';
 
 const Container = styled.div`
   display: flex;

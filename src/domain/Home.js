@@ -6,8 +6,8 @@ import styled from 'styled-components';
 
 import { logout, hasAuthentication as hasToken  } from '../auth';
 
-import Clients from '../Clients';
-import Header from './Header';
+import Clients from './Clients';
+import Header from '../components/Header';
 
 const Container = styled.div`
  background-image:

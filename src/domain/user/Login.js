@@ -5,12 +5,12 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { login, hasAuthentication } from '../auth';
+import { login, hasAuthentication } from '../../auth';
 import {
     Button,
     InputStyled,
     LabelStyled,
-} from '../components';
+} from '../../components';
 
 const ContainerLogin = styled.div`
   color: #002140;

@@ -9,8 +9,8 @@ import {
 
 import './App.css';
 import { logout, hasAuthentication } from './auth';
-import Login from './user/Login';
-import Home from './home/Home';
+import Login from './domain/user/Login';
+import Home from './domain/Home';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 
