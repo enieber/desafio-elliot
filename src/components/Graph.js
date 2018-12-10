@@ -9,21 +9,21 @@ const GraphContainer = styled.div`
   width: 450px;
   align-items: center;
 `;
-                   
+
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
-      cx,
-      cy,
-      midAngle,
-      innerRadius,
-      outerRadius,
-      startAngle,
-      endAngle,
-      fill,
-      payload,
-      percent,
-      value,
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    startAngle,
+    endAngle,
+    fill,
+    payload,
+    percent,
+    value,
   } = props;
 
   const sin = Math.sin(-RADIAN * midAngle);
@@ -57,8 +57,8 @@ const renderActiveShape = (props) => {
         outerRadius={outerRadius + 10}
         fill={fill}
       />
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
-      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none"/>
+      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
       <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#2e2d33">{`${value} clientes`}</text>
       <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
         {`(${(percent * 100).toFixed(2)}%)`}
@@ -72,35 +72,33 @@ export default class Graph extends React.Component {
     super(props);
     this.state = {
       activeIndex: 0,
-    }
+    };
   }
 
-    render() {
-      return (
-	 <GraphContainer>
-	    <PieChart
-		width={400}
-		height={400}
-	    >
-	      <Pie 
-        	activeIndex={this.state.activeIndex}
-		activeShape={renderActiveShape} 
-	        data={this.props.data} 
-		cx={200} 
-	        cy={200} 
-		innerRadius={60}
-	        outerRadius={80} 
-		fill="#ee2e5d"
-		onMouseEnter={(i, index) => {
+  render() {
+    return (
+      <GraphContainer>
+        <PieChart
+          width={400}
+          height={400}
+        >
+          <Pie
+            activeIndex={this.state.activeIndex}
+            activeShape={renderActiveShape}
+            data={this.props.data}
+            cx={200}
+            cy={200}
+            innerRadius={60}
+            outerRadius={80}
+            fill="#ee2e5d"
+            onMouseEnter={(i, index) => {
 		  this.setState({
 		    activeIndex: index,
 		  });
-
-		}}
-	      />
-	  </PieChart>
-	</GraphContainer>
+            }}
+          />
+        </PieChart>
+      </GraphContainer>
     );
   }
 }
-

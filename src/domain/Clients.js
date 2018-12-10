@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 import {
-    get as getRequest,
-    put as putRequest,
+  get as getRequest,
+  put as putRequest,
 } from '../request';
 import Graph from '../components/Graph';
 import {
@@ -51,7 +51,7 @@ const Contacts = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
-  ${media.greaterThan("large")`
+  ${media.greaterThan('large')`
     flex-direction: row;
   `}
 `;
@@ -62,18 +62,18 @@ export default class Clients extends React.Component {
     this.state = {
       loading: false,
       listClients: [],
-    }
+    };
   }
-  
-  async  componentDidMount() {
+
+  async componentDidMount() {
     try {
-	this.setState({ loading: true });
-	const responseClients = await getRequest('/clients');
-	const listClients = await responseClients.json();
-	this.setState({
+      this.setState({ loading: true });
+      const responseClients = await getRequest('/clients');
+      const listClients = await responseClients.json();
+      this.setState({
 	  listClients,
-          loading: false,
-	});
+        loading: false,
+      });
     } catch (err) {
       console.warn(err);
     }
@@ -94,86 +94,92 @@ export default class Clients extends React.Component {
 
     const data = [
 	    {
-		name: 'Autorizado',
-		value: this.state.listClients.filter(item => item.has_admin).length
+        name: 'Autorizado',
+        value: this.state.listClients.filter(item => item.has_admin).length,
 	    },
 	    {
-		name: 'Não autorizado',
-		value: this.state.listClients.filter(item => !item.has_admin).length
-	    }
-	];
+        name: 'Não autorizado',
+        value: this.state.listClients.filter(item => !item.has_admin).length,
+	    },
+    ];
 
-      return (
-       <Container>
+    return (
+      <Container>
 
-	     <h2
-		 style={{
+        <h2
+          style={{
 		     textAlign: 'center',
 	        fontSize: '16px',
 	      }}
-	    >Clientes</h2>
-	  <Graph
-	    data={data}
-	  />
-          <ClientsContainer>
-	  <List>
-	  {this.state.listClients.map((item) => {
-	      return (
-		<ItemList>
-		  <ClientData>
-		    <h3
-		      style={{
+        >
+Clientes
+        </h2>
+        <Graph
+          data={data}
+        />
+        <ClientsContainer>
+          <List>
+            {this.state.listClients.map(item => (
+              <ItemList>
+                <ClientData>
+                  <h3
+                    style={{
 		        fontSize: '14px',
-			fontWeigth: 'bold',
+		        fontWeigth: 'bold',
 		      }}
-		    >
-			{item.name}</h3>
-		    <p
-		    style={{
+                  >
+                    {item.name}
+                  </h3>
+                  <p
+                    style={{
 		      fontSize: '14px',
 		    }}
-		  >
-		      {item.has_admin ? 'Administrando' : 'Não administrado'}</p>
-		  {item.has_admin ? '' : (
-		      <Button
-			  onClick={() => {
+                  >
+                    {item.has_admin ? 'Administrando' : 'Não administrado'}
+                  </p>
+                  {item.has_admin ? '' : (
+                    <Button
+                      onClick={() => {
 			      const newItem = {
 				  ...item,
 				  has_admin: true,
 			      };
 			      putRequest(`/clients/${item.id}`, newItem)
-				.then(res => {
+			      .then((res) => {
 				  alert(`Agora você é administrador da conta do ${item.name}`);
 				  window.location.reload();
-				});
-
+			      });
 			  }}
-			small
-			primary
-		      >Solicitar</Button>)}
-		  </ClientData>
-		  <Contacts>
-		 		    <p
-		     style={{
+                      small
+                      primary
+                    >
+Solicitar
+                    </Button>)}
+                </ClientData>
+                <Contacts>
+                  <p
+                    style={{
 		      fontSize: '14px',
 		    }}
-		    >{item.email}</p>
-		    <p
-		      style={{
+                  >
+{item.email}
+                  </p>
+                  <p
+                    style={{
 			  fontSize: '14px',
 			  paddingLeft: 10,
-		      }}>
-		    {item.whatsapp}</p>
-    
+		      }}
+                  >
+                    {item.whatsapp}
+                  </p>
 
-		  </Contacts>  
-	      </ItemList>
-	      )
-	  })}
-        </List>
-      </ClientsContainer>
-    </Container>
+
+                </Contacts>
+              </ItemList>
+	      ))}
+          </List>
+        </ClientsContainer>
+      </Container>
     );
   }
 }
-

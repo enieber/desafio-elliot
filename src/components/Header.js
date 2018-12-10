@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button } from './';
+import { Button } from '.';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -13,18 +13,17 @@ const HeaderContainer = styled.header`
 `;
 
 export default class Header extends React.PureComponent {
-    render() {
-	return (
-	    <HeaderContainer>
-		  <h1>Elliot</h1>
-		  <Button
-		      primary
-			  onClick={this.props.logout}
-		    >
+  render() {
+    return (
+      <HeaderContainer>
+        <h1>Elliot</h1>
+        <Button
+          primary
+          onClick={this.props.logout}
+        >
 		    Sair
-		</Button>
-	    </HeaderContainer>
-	);
-    }
+        </Button>
+      </HeaderContainer>
+    );
+  }
 }
-

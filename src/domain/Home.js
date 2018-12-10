@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   Redirect,
-} from "react-router-dom";
+} from 'react-router-dom';
 import styled from 'styled-components';
 
-import { logout, hasAuthentication as hasToken  } from '../auth';
+import { logout, hasAuthentication as hasToken } from '../auth';
 
 import Clients from './Clients';
 import Header from '../components/Header';
@@ -31,22 +31,21 @@ export default class Home extends React.Component {
     const token = hasToken();
     this.setState({ hasToken: token });
   }
-    
+
   render() {
     const { hasToken } = this.state;
-  
+
     return (
-	<Container>
-	    <Header
-		logout={() => {
+      <Container>
+        <Header
+          logout={() => {
 		    logout();
 		    this.setState({ hasToken: false });
-		}}
-	    />
-	    <Clients/>
-	   {hasToken ? (<div/>) : (<Redirect to={'/login'} />)}
-	</Container>
+          }}
+        />
+        <Clients />
+        {hasToken ? (<div />) : (<Redirect to="/login" />)}
+      </Container>
     );
   }
 }
-
