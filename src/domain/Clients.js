@@ -137,7 +137,7 @@ Clientes
                   >
                     {item.has_admin ? 'Administrando' : 'Não administrado'}
                   </p>
-                  {item.has_admin ? '' : (
+		  {item.has_admin ? '' : (
                     <Button
                       onClick={() => {
 			      const newItem = {
@@ -157,21 +157,23 @@ Solicitar
                     </Button>)}
                 </ClientData>
                 <Contacts>
-                  <p
+		  <a
+		    href={`mailto:${item.email}`}
                     style={{
 		      fontSize: '14px',
 		    }}
                   >
 {item.email}
-                  </p>
-                  <p
+                  </a>
+		  <a
+		    href={`https://wa.me/${item.whatsapp}?text=Oi, eu sou o gerente de carteiras do Elliot, `}
                     style={{
 			  fontSize: '14px',
 			  paddingLeft: 10,
 		      }}
                   >
                     {item.whatsapp}
-                  </p>
+                  </a>
 
 
                 </Contacts>

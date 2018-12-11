@@ -11,13 +11,15 @@ import './App.css';
 import { logout, hasAuthentication } from './auth';
 import Login from './domain/user/Login';
 import Home from './domain/Home';
+import Wallet from './domain/Wallet';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const restrict = hasAuthentication() 
+return (
   <Route
     {...rest}
-    render={props => (hasAuthentication() ? (
-      <Home {...props} />
-    ) : (
+    render={props => (restrict ? (rest.path == '/' ?
+	(<Home {...props} />) : (<Wallet {...props} />)) : (
       <Redirect
         to={{
           pathname: '/login',
@@ -27,7 +29,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     ))
       }
   />
-);
+)};
 
 
 class App extends Component {
@@ -42,8 +44,13 @@ class App extends Component {
           <PrivateRoute
             exact
             path="/"
-            componet={Home}
+	    componet={Home}
+	  />
+	  <PrivateRoute
+	      path="/wallet/:id"
+	    componet={Wallet}
           />
+
         </React.Fragment>
       </Router>
     );
