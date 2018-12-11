@@ -6,6 +6,10 @@ Este projeto é um desfio front end da [plataforma Elliot](https://eusouelliot.c
 
 Para rodar o aplicativo, basta instalar as dependencias nodejs e npm. Apos instalado basta usar os scripts para gerar a aplicação ou rodar em teste. Ou entre no [site hospedado no netiflify](https://desafio-elliot.netlify.com/login)
 
+**usuario:** admin@eusouelliot.com
+
+**senha:** 1234
+
 ## Para buildar
 
 Basta rodar o comaddo:
